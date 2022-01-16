@@ -19,29 +19,56 @@ A
 }
 
 ___x_cmd_license_(){
+    local url
+    local license_full_name
+
     ___x_cmd_license_header
     printf "\n"
-    xrc cat "license/lib/$license"
+
+    local p
+    if p="$(xrc which "license/lib/$license")"; then
+        cat "$p"
+    else
+        ___x_cmd_httpget "$url"
+    fi
     printf "\n"
 }
 
 ___x_cmd_license_header(){
     case "$license" in
-        gplv3)
+        agplv3)
             url="https://www.gnu.org/licenses/gpl-3.0.txt"
             license_full_name="GNU GENERAL PUBLIC LICENSE, Version 3"
-            ___x_cmd_license_header_
             ;;
         apachev2)
             url="http://www.apache.org/licenses/LICENSE-2.0"
             license_full_name="Apache License, Version 2.0"
-            ___x_cmd_license_header_
             ;;
-        mplv2)
+        bsd)
             url="http://www.apache.org/licenses/LICENSE-2.0"
             license_full_name="Apache License, Version 2.0"
-            ___x_cmd_license_header_
+            ;;
+        bslv1)
+            url="http://www.apache.org/licenses/LICENSE-2.0"
+            license_full_name="Apache License, Version 2.0"
+            ;;
+        gplv2)
+            url="https://www.gnu.org/licenses/gpl-2.0.txt"
+            license_full_name="GNU GENERAL PUBLIC LICENSE, Version 2"
+            ;;
+        gplv3)
+            url="https://www.gnu.org/licenses/gpl-3.0.txt"
+            license_full_name="GNU GENERAL PUBLIC LICENSE, Version 3"
+            ;;
+        lgplv3)
+            url="https://www.gnu.org/licenses/lgpl-3.0.txt"
+            license_full_name="GNU LESSER GENERAL PUBLIC LICENSE, Version 3"
+            ;;
+        mplv2)
+            url="http://mozilla.org/MPL/2.0/"
+            license_full_name="Apache License, Version 2.0"
     esac
+    ___x_cmd_license_header_
 }
 
 ___x_cmd_license_header_(){
