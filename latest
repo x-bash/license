@@ -3,31 +3,32 @@ xrc param
 
 ___x_cmd_license(){
     param:dsl <<A
-subcommand:
-    gpl         "gpl license"
-    apache      "apache license"
-    mpl         "mpl license"
+options:
+    --name              "Provide name"
+    --email             "Provide email"
+    --year              "year"
+    #1                  "license name"          =   gplv3     apachev2     mplv2
 A
 
     param:run
 
-    if [ -z "$PARAM_SUBCMD" ]; then
-        ___x_cmd_license --help
-        return
-    fi
-
-    "___x_cmd_license_${PARAM_SUBCMD}" "$@"
-
+    local license="$1"
+    ___x_cmd_license_header
 }
 
 ___x_cmd_license_header(){
     case "$license" in
-        GPLv3)
+        gplv3)
             url="https://www.gnu.org/licenses/gpl-3.0.txt"
             license_full_name="GNU GENERAL PUBLIC LICENSE, Version 3"
             ___x_cmd_license_header_
             ;;
-        APACHEv2)
+        apachev2)
+            url="http://www.apache.org/licenses/LICENSE-2.0"
+            license_full_name="Apache License, Version 2.0"
+            ___x_cmd_license_header_
+            ;;
+        mplv2)
             url="http://www.apache.org/licenses/LICENSE-2.0"
             license_full_name="Apache License, Version 2.0"
             ___x_cmd_license_header_
@@ -48,60 +49,6 @@ ___x_cmd_license_header_(){
         gsub("<EMAIL>", "(" email ")", $0)
         gsub("<WEB-URL>", url, $0)
         gsub("<LICENSE-NAME>", license_full_name, $0)
-        print $0
-    }
-    '
-}
-
-___x_cmd_license_gpl(){
-    param:dsl <<A
-options:
-    --name      "Provide name"
-    --email     "Provide email"
-    --year      "year"
-    --version   "license version"
-A
-    param:run
-
-    {
-        case "${version:-v3}" in
-            3|v3)     xrc cat license/lib/GPLv3
-        esac
-    } | awk -v year="${year:-2022}" -v email="${email:-agent@x-cmd.com}" -v name="${name:-x-cmder}" '
-    NR==1{
-        gsub("<YEAR>", year, $0)
-        gsub("<NAME>", name, $0)
-        gsub("<EMAIL>", "(" email ")", $0)
-        print $0
-    }
-    NR!=1{
-        print $0
-    }
-    '
-}
-
-___x_cmd_license_apache(){
-    param:dsl <<A
-options:
-    --name      "Provide name"
-    --email     "Provide email"
-    --year      "year"
-    --version   "license version"
-A
-    param:run
-
-    {
-        case "${version:-v3}" in
-            3|v3)     xrc cat license/lib/APACHEv2
-        esac
-    } | awk -v year="${year:-2022}" -v email="${email:-agent@x-cmd.com}" -v name="${name:-x-cmder}" '
-    NR==1{
-        gsub("<YEAR>", year, $0)
-        gsub("<NAME>", name, $0)
-        gsub("<EMAIL>", "(" email ")", $0)
-        print $0
-    }
-    NR!=1{
         print $0
     }
     '
