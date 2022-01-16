@@ -1,3 +1,7 @@
+# shellcheck shell=sh disable=SC3043  # xrc
+
+# author:       Li Junhao           l@x-cmd.com
+# maintainer:   Li Junhao
 
 xrc param
 
@@ -7,13 +11,19 @@ options:
     --name              "Provide name"
     --email             "Provide email"
     --year              "year"
-    #1                  "license name"          =   gplv3     apachev2     mplv2
+    #1                  "license name"             =   gplv3     apachev2     mplv2
 A
 
     param:run
 
-    local license="$1"
+    license="$1" ___x_cmd_license_
+}
+
+___x_cmd_license_(){
     ___x_cmd_license_header
+    printf "\n"
+    xrc cat "license/lib/$license"
+    printf "\n"
 }
 
 ___x_cmd_license_header(){
