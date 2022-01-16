@@ -1,0 +1,47 @@
+
+xrc param
+
+___x_cmd_license(){
+    param:dsl <<A
+subcommand:
+    gpl         "gpl license"
+    apache      "apache license"
+    mpl         "mpl license"
+A
+
+    param:run
+
+    if [ -z "$PARAM_SUBCMD" ]; then
+        ___x_cmd_license --help
+        return
+    fi
+
+    "___x_cmd_license_${PARAM_SUBCMD}" "$@"
+
+}
+
+___x_cmd_license_gpl(){
+    param:dsl <<A
+options:
+    --name      "Provide name"
+    --email     "Provide email"
+    --year      "year"
+    --version   "license version"
+A
+    param:run
+
+    {
+        case "${version:-v3}" in
+            3|v3)     cat license/lib/GPLv3
+        esac
+    } | awk -v year="$year" -v email="$email" -v name="$name" '
+    NR==1{
+        gsub("<YEAR>", year, $0)
+        gsub("<NAME>", name, $0)
+        gsub("<EMAIL>", "(" email ")", $0)
+    }
+    NR!=1{
+        print $0
+    }
+    '
+}
