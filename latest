@@ -41,15 +41,15 @@ ___x_cmd_license_header(){
             license_full_name="GNU GENERAL PUBLIC LICENSE, Version 3"
             ;;
         apachev2)
-            url="http://www.apache.org/licenses/LICENSE-2.0"
+            url="https://www.apache.org/licenses/LICENSE-2.0.txt"
             license_full_name="Apache License, Version 2.0"
             ;;
         bsd)
-            url="http://www.apache.org/licenses/LICENSE-2.0"
+            url="https://www.apache.org/licenses/LICENSE-2.0.txt"
             license_full_name="Apache License, Version 2.0"
             ;;
         bslv1)
-            url="http://www.apache.org/licenses/LICENSE-2.0"
+            url="https://www.apache.org/licenses/LICENSE-2.0"
             license_full_name="Apache License, Version 2.0"
             ;;
         gplv2)
@@ -65,7 +65,7 @@ ___x_cmd_license_header(){
             license_full_name="GNU LESSER GENERAL PUBLIC LICENSE, Version 3"
             ;;
         mplv2)
-            url="http://mozilla.org/MPL/2.0/"
+            url="https://mozilla.org/MPL/2.0/"
             license_full_name="Apache License, Version 2.0"
     esac
     ___x_cmd_license_header_
