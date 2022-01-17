@@ -90,9 +90,4 @@ ___x_cmd_license_header_(){
     '
 }
 
-if ___x_cmd_is_suitable_advise_env; then
-    xrc advise/latest
-    advise license
-fi
-
 xrc setmain ___x_cmd_license
