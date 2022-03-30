@@ -16,6 +16,8 @@ options:
     license="$1" ___x_cmd_license_main
 }
 
+xrc:mod license/lib/content license/lib/meta
+
 ___x_cmd_license_main(){
     ___x_cmd_license___header
     printf "\n"
@@ -27,6 +29,6 @@ ___x_cmd_license_main(){
     printf "\n"
 }
 
-xrc:mod license/lib/content
+
 
 xrc setmain ___x_cmd_license
