@@ -15,14 +15,14 @@ A
 
     param:run
 
-    license="$1" ___x_cmd_license_
+    license="$1" ___x_cmd_license_main
 }
 
-___x_cmd_license_(){
+___x_cmd_license_main(){
     local url
     local license_full_name
 
-    ___x_cmd_license_header
+    ___x_cmd_license___header
     printf "\n"
 
     local p
@@ -34,7 +34,7 @@ ___x_cmd_license_(){
     printf "\n"
 }
 
-___x_cmd_license_header(){
+___x_cmd_license___header(){
     case "$license" in
         agplv3)
             url="https://www.gnu.org/licenses/gpl-3.0.txt"
@@ -68,10 +68,10 @@ ___x_cmd_license_header(){
             url="https://mozilla.org/MPL/2.0/"
             license_full_name="Apache License, Version 2.0"
     esac
-    ___x_cmd_license_header_
+    ___x_cmd_license___header_
 }
 
-___x_cmd_license_header_(){
+___x_cmd_license___header_(){
     xrc cat license/lib/HEADER | awk \
         -v year="${year:-2022}" \
         -v email="${email:-agent@x-cmd.com}" \
