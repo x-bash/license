@@ -54,6 +54,4 @@ A
     printf "\n"
 }
 
-
-
 xrc setmain ___x_cmd_license
