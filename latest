@@ -4,13 +4,13 @@
 xrc param
 
 ___x_cmd_license(){
-    param:dsl <<A
+    param:dsl '
 options:
     --name              "Provide name"
     --email             "Provide email"
     --year              "year"
     #1                  "license name"           <license>  =   gplv3     apachev2     mplv2
-A
+'
 
     param:run
 
