@@ -28,8 +28,6 @@ ___x_cmd_license_main(){
 $(___x_cmd_license_meta_get_name_url "$license")
 A
 
-    printf "\n"
-
     ___x_cmd_httpget_gitx x-cmd license main \
             "lib/body/$license" \
             "$___X_CMD_ROOT_TMP/license/body/$license"
@@ -50,8 +48,6 @@ A
         print $0
     }
     ' <"$___X_CMD_ROOT_TMP/license/body/$license"
-
-    printf "\n"
 }
 
 xrc setmain ___x_cmd_license
