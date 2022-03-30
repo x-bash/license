@@ -71,7 +71,8 @@ ___x_cmd_license___header(){
 }
 
 ___x_cmd_license___header_(){
-    xrc cat license/lib/HEADER | awk \
+    ___x_cmd_httpget_gitx x-cmd license main lib/header/HEADER "$___X_CMD_ROOT_TMP/license/header/HEADER"
+    awk \
         -v year="${year:-2022}" \
         -v email="${email:-agent@x-cmd.com}" \
         -v name="${name:-x-cmder}" \
@@ -86,7 +87,7 @@ ___x_cmd_license___header_(){
         gsub("<LICENSE-NAME>", license_full_name, $0)
         print $0
     }
-    '
+    ' <"$___X_CMD_ROOT_TMP/license/header/HEADER"
 }
 
 xrc setmain ___x_cmd_license
