@@ -5,14 +5,14 @@ ___x_cmd_license_meta(){
 }
 
 ___x_cmd_license_meta_list(){
-    ___x_cmd_license_meta | ___x_cmd_license_meta_list_parser
+    ___x_cmd_license_meta | ___x_cmd_license___meta_list_parser
 }
 
 ___x_cmd_license_meta_get_name_url(){
-    ___x_cmd_license_meta | ___x_cmd_license_meta_get_name_url_parser "$@"
+    ___x_cmd_license_meta | ___x_cmd_license___meta_get_name_url_parser "$@"
 }
 
-___x_cmd_license_meta_list_parser(){
+___x_cmd_license___meta_list_parser(){
     awk '
 {
     if ( ($0 ~ /^[ ]{2}-/) && ($0 ~ /:$/) )    print substr($2, 1, length($2)-1)
@@ -20,7 +20,7 @@ ___x_cmd_license_meta_list_parser(){
     '
 }
 
-___x_cmd_license_meta_get_name_url_parser(){
+___x_cmd_license___meta_get_name_url_parser(){
     local target="${1:?Provide license}"
 
     awk -v target="$target" '
