@@ -1,7 +1,7 @@
 
 ___x_cmd_license_meta(){
-    ___x_cmd_httpget_gitx x-cmd license main index.yml "$TMPDIR/license/index.yml"
-    cat "$TMPDIR/license/index.yml"
+    ___x_cmd_httpget_gitx x-cmd license main index.yml "$___X_CMD_ROOT_TMP/license/index.yml"
+    cat "$___X_CMD_ROOT_TMP/license/index.yml"
 }
 
 ___x_cmd_license_meta_list(){

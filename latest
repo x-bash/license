@@ -34,7 +34,7 @@ A
 
     ___x_cmd_httpget_gitx x-cmd license main \
             "lib/body/$license" \
-            "$TMPDIR/license/body/$license"
+            "$___X_CMD_ROOT_TMP/license/body/$license"
     awk \
         -v year="${year}" \
         -v email="${email}" \
@@ -50,7 +50,7 @@ A
         gsub("<LICENSE-NAME>", license_full_name, $0)
         print $0
     }
-    ' < "$TMPDIR/license/body/$license"
+    ' < "$___X_CMD_ROOT_TMP/license/body/$license"
 }
 
 xrc setmain ___x_cmd_license
