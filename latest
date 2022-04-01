@@ -16,10 +16,6 @@ options:
     ___x_cmd_license_main "${1:?Provide license}"
 }
 
-# TODO: optimizable
-printf "%s\n" "$(X_CMD_ADVISE_FUNC_NAME=___x_cmd_license ___x_cmd_license _x_cmd_advise_json)" > lib/license.advise.json
-advise init ___x_cmd_license - < lib/license.advise.json
-
 xrc:mod license/lib/meta
 
 ___x_cmd_license_main(){
